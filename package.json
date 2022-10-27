@@ -1,0 +1,20 @@
+{
+  "name": "blog-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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g@github.com/muhdibee/Blog-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muhdibee/Blog-API/issues"
+  },
+  "homepage": "https://github.com/muhdibee/Blog-API#readme"
+}
