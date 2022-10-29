@@ -6,7 +6,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 //Connect to MongoDB.
-connectToMongoDB();
+// connectToMongoDB();
 
 app.get("/", (req, res) => {
 	res.json({ status: true, message: "Welcome to Blog" });
