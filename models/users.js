@@ -13,6 +13,13 @@ const UserSchema = new Schema({
 		required: [true, "Username is required."],
 		trim: true,
 	},
+	username: {
+		type: String,
+		unique: [true, "Username must be unique."],
+		required: [true, "Username is required."],
+		trim: true,
+	},
+
 	first_name: {
 		type: String,
 		required: [true, "First name is required."],
@@ -30,10 +37,22 @@ const UserSchema = new Schema({
 		trim: true,
 	},
 
-	created_at: Date,
+	timestamp: Date,
 	updated_at: Date,
 });
 
-const UserModel = mongoose.model("Users", UserSchema);
+UserSchema.pre("save", async function () {
+	const user = this;
+	const salt = await bcrypt.genSalt(10);
+	const hash = await bcrypt.hash(user.password, salt);
+	user.password = hash;
+});
 
-module.exports = UserModel;
+// Compare passed user password and correct password hash
+UserSchema.methods.isValidPassword = async function (password) {
+	return await bcrypt.compare(password, this.password);
+};
+
+const UsersModel = mongoose.model("users", UserSchema);
+
+module.exports = UsersModel;
