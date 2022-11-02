@@ -6,11 +6,10 @@ const Schema = mongoose.Schema;
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const UserSchema = new Schema({
-	user_id: Schema.Types.ObjectId,
 	email: {
 		type: String,
-		unique: [true, "Username must be unique."],
-		required: [true, "Username is required."],
+		unique: [true, "Email must be unique."],
+		required: [true, "Email is required."],
 		trim: true,
 	},
 	username: {
@@ -36,7 +35,11 @@ const UserSchema = new Schema({
 		required: [true, "Username is required."],
 		trim: true,
 	},
-
+	user_type: {
+		type: String,
+		enum: ["admin", "user"],
+		default: "user",
+	},
 	timestamp: Date,
 	updated_at: Date,
 });
@@ -55,4 +58,11 @@ UserSchema.methods.isValidPassword = async function (password) {
 
 const UsersModel = mongoose.model("users", UserSchema);
 
-module.exports = UsersModel;
+function generateToken(_id, email, username, first_name, last_name, user_type) {
+	return jwt.sign({ _id, email, username, first_name, last_name, user_type }, JWT_SECRET, { expireIn: "1h" });
+}
+
+module.exports = {
+	UsersModel,
+	generateToken,
+};
