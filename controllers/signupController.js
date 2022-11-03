@@ -3,10 +3,8 @@ const { usersModel, generateToken } = require("../models/usersModel");
 
 // Create a new user...............
 async function postUser(req, res, next) {
-	console.log("I am here.");
-	const body = req.body;
-
 	try {
+		const body = req.body;
 		const user = await usersModel.create({
 			email: body.email,
 			first_name: body.first_name,

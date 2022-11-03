@@ -2,7 +2,10 @@ const express = require("express");
 const articlesRouter = express.Router();
 const articlesController = require("../controllers/articlesController");
 
-articlesRouter.route("/").post(articlesController.postArticle); // Creates a new article.
+articlesRouter
+	.route("/")
+	.get(articlesController.getArticles) // GET a single order.
+	.post(articlesController.postArticle); // Creates a new article.
 
 // ordersRouter
 // 	.route("/:orderId")

@@ -3,6 +3,7 @@ const logger = require("morgan");
 const express = require("express");
 const connectToMongoDB = require("./DBConnection");
 const signupRouter = require("./routes/signupRoute");
+const loginRouter = require("./routes/loginRoute");
 const articlesRouter = require("./routes/articlesRoute");
 
 const app = express();
@@ -19,6 +20,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/signup", signupRouter);
+app.use("/api/login", loginRouter);
 app.use("/api/articles", articlesRouter);
 
 // App error handler.

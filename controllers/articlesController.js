@@ -3,8 +3,6 @@ const { articlesModel } = require("../models/articlesModel");
 
 // Create a new article...............
 async function postArticle(req, res, next) {
-	console.log("I am here.");
-
 	try {
 		const body = req.body;
 		const wordCount = body.body.split(" ").length;
@@ -30,6 +28,17 @@ async function postArticle(req, res, next) {
 	}
 }
 
+// Get all articles...............
+async function getArticles(req, res, next) {
+	try {
+		const articles = await articlesModel.find({});
+		res.status(200).json({ status: true, articles });
+	} catch (err) {
+		next({ status: 500, errDesc: err, message: "An error occurred, please try again later." });
+	}
+}
+
 module.exports = {
+	getArticles,
 	postArticle,
 };
