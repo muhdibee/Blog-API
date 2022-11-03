@@ -13,12 +13,6 @@ const UserSchema = new Schema({
 		required: [true, "Email is required."],
 		trim: true,
 	},
-	username: {
-		type: String,
-		unique: [true, "Username must be unique."],
-		required: [true, "Username is required."],
-		trim: true,
-	},
 
 	first_name: {
 		type: String,
@@ -59,8 +53,8 @@ UserSchema.methods.isValidPassword = async function (password) {
 
 const usersModel = mongoose.model("users", UserSchema);
 
-function generateToken(_id, email, username, first_name, last_name, user_type) {
-	return jwt.sign({ _id, email, username, first_name, last_name, user_type }, JWT_SECRET, { expiresIn: "1h" });
+function generateToken(_id, email, first_name, last_name, user_type) {
+	return jwt.sign({ _id, email, first_name, last_name, user_type }, JWT_SECRET, { expiresIn: "1h" });
 }
 
 module.exports = {

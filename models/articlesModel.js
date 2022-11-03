@@ -29,19 +29,14 @@ const ArticlesSchema = new Schema({
 		unique: [true, "author must be unique."],
 		trim: true,
 	},
-	author_username: {
-		type: String,
-		required: [true, "author_username is required."],
-		unique: [true, "author_username must be unique."],
-		trim: true,
-	},
 
 	state: {
 		type: String,
+		default: "draft",
 		enum: ["draft", "published"],
 	},
 	read_count: {
-		type: Array,
+		type: Number,
 	},
 	reading_time: {
 		type: Number,
@@ -49,11 +44,12 @@ const ArticlesSchema = new Schema({
 	},
 	tags: {
 		type: Array,
+		default: [],
 	},
 	timestamp: Date,
 	updated_at: Date,
 });
 
-const ArticlesModel = mongoose.model("articles", ArticlesSchema);
+const articlesModel = mongoose.model("articles", ArticlesSchema);
 
-module.exports = ArticlesModel;
+module.exports = { articlesModel };
