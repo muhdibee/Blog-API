@@ -3,6 +3,7 @@ const { usersModel, generateToken } = require("../models/usersModel");
 
 // Create a new user...............
 async function postUser(req, res, next) {
+	console.log("I am here.");
 	const body = req.body;
 
 	try {
@@ -18,9 +19,9 @@ async function postUser(req, res, next) {
 		});
 		const { _id, email, username, first_name, last_name, user_type } = user;
 		const token = generateToken(_id, email, username, first_name, last_name, user_type);
-		res.json({ status: true, _id, email, username, first_name, last_name, user_type, token });
+		res.header("x-auth-token", token).status(200).json({ status: true, _id, email, username, first_name, last_name, user_type, token });
 	} catch (err) {
-		next({ status: 400, message: "An error occurred, please try again." });
+		next({ status: 400, errDesc: err, message: "An error occurred, please check your inputs and try again." });
 	}
 }
 

@@ -1,5 +1,6 @@
 require("dotenv").config();
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -56,13 +57,13 @@ UserSchema.methods.isValidPassword = async function (password) {
 	return await bcrypt.compare(password, this.password);
 };
 
-const UsersModel = mongoose.model("users", UserSchema);
+const usersModel = mongoose.model("users", UserSchema);
 
 function generateToken(_id, email, username, first_name, last_name, user_type) {
-	return jwt.sign({ _id, email, username, first_name, last_name, user_type }, JWT_SECRET, { expireIn: "1h" });
+	return jwt.sign({ _id, email, username, first_name, last_name, user_type }, JWT_SECRET, { expiresIn: "1h" });
 }
 
 module.exports = {
-	UsersModel,
+	usersModel,
 	generateToken,
 };
