@@ -5,6 +5,7 @@ const connectToMongoDB = require("./DBConnection");
 const signupRouter = require("./routes/signupRoute");
 const loginRouter = require("./routes/loginRoute");
 const articlesRouter = require("./routes/articlesRoute");
+const auth = require("./middlewares/auth");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -15,7 +16,7 @@ connectToMongoDB();
 app.use(express.json());
 app.use(logger("dev"));
 
-app.get("/", (req, res) => {
+app.get("/", auth, (req, res) => {
 	res.json({ status: true, message: "Welcome to Blog-API." });
 });
 
