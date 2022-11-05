@@ -26,7 +26,6 @@ const ArticlesSchema = new Schema({
 	author: {
 		type: String,
 		required: [true, "author is required."],
-		unique: [true, "author must be unique."],
 		trim: true,
 	},
 
@@ -37,6 +36,7 @@ const ArticlesSchema = new Schema({
 	},
 	read_count: {
 		type: Number,
+		default: 0,
 	},
 	reading_time: {
 		type: Number,
@@ -48,6 +48,14 @@ const ArticlesSchema = new Schema({
 	},
 	timestamp: Date,
 	updated_at: Date,
+});
+
+ArticlesSchema.pre("save", async function () {
+	const article = this;
+	const wordCount = await article.body.split(" ").length;
+	const reading_time = Math.ceil(wordCount / 200);
+
+	article.reading_time = reading_time;
 });
 
 const articlesModel = mongoose.model("articles", ArticlesSchema);

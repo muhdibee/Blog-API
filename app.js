@@ -16,7 +16,7 @@ connectToMongoDB();
 app.use(express.json());
 app.use(logger("dev"));
 
-app.get("/", auth, (req, res) => {
+app.get("/", (req, res) => {
 	res.json({ status: true, message: "Welcome to Blog-API." });
 });
 

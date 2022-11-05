@@ -11,7 +11,6 @@ const auth = async (req, res, next) => {
 		}
 		const decodedUser = jwt.verify(token, JWT_SECRET);
 		req.user = decodedUser;
-		console.log(req.user);
 		next();
 	} catch (err) {
 		next({ status: 401, message: "Unauthorized." });
