@@ -29,10 +29,10 @@ describe("Testing Blog-API", () => {
 	// Testing app.post('/api/signup').
 	test("app.post('/api/signup')", async () => {
 		const reqBody = {
-			email: "ahmed.gmail.com",
-			first_name: "ahmed",
+			email: "sam.gmail.com",
+			first_name: "sam",
 			last_name: "ibrahim",
-			password: "ahmed12345",
+			password: "sam12345",
 			user_type: "admin",
 		};
 		const { status, body } = await supertest(app).post("/api/signup").send(reqBody);
@@ -44,3 +44,5 @@ describe("Testing Blog-API", () => {
 		expect(body.token).toBeDefined();
 	});
 });
+
+afterAll(() => {});
