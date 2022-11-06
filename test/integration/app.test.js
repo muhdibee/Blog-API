@@ -9,6 +9,7 @@ describe("Testing Blog-API", () => {
 		expect(body).toEqual({ status: true, message: "Welcome to Blog-API." });
 	});
 
+	// Testing app.get('/api/articles').
 	test("app.get('/api/articles')", async () => {
 		const { status, body } = await supertest(app).get("/api/articles");
 		expect(status).toBe(200);
@@ -16,6 +17,7 @@ describe("Testing Blog-API", () => {
 		expect(body.articles).toBeDefined();
 	});
 
+	// Testing app.get('/api/articles/:id').
 	test("app.get('/api/articles/:id')", async () => {
 		const id = "636790adaa3e4ce035c154ed";
 		const { status, body } = await supertest(app).get(`/api/articles/${id}`);
@@ -23,10 +25,22 @@ describe("Testing Blog-API", () => {
 		expect(body.status).toBeTruthy();
 		expect(body.article).toBeDefined();
 	});
-});
 
-// supertest(app)
-// .get("/api/articles")
-// .expect('content-Type', /json/)
-// .expect(200)
-// .
+	// Testing app.post('/api/signup').
+	test("app.post('/api/signup')", async () => {
+		const reqBody = {
+			email: "ahmed.gmail.com",
+			first_name: "ahmed",
+			last_name: "ibrahim",
+			password: "ahmed12345",
+			user_type: "admin",
+		};
+		const { status, body } = await supertest(app).post("/api/signup").send(reqBody);
+		expect(status).toBe(200);
+		expect(body.status).toBeTruthy();
+		expect(body._id).toBeDefined();
+		expect(body.email).toBeDefined();
+		expect(body.user_type).toBeDefined();
+		expect(body.token).toBeDefined();
+	});
+});
