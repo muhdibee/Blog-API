@@ -25,15 +25,25 @@ async function postArticle(req, res, next) {
 // Get all articles.
 async function getArticles(req, res, next) {
 	try {
-		const { author } = req.query;
+		const articles = await articlesModel.find({ state: "published" });
+		res.status(200).json({ status: true, articles });
+	} catch (err) {
+		next({ status: 500, errDesc: err, message: "An error occurred, please try again." });
+	}
+}
+// Get author's articles.
+async function getUserArticles(req, res, next) {
+	try {
+		const user = req.user.email;
+		const { state } = req.query;
 
-		if (author) {
-			const articles = await articlesModel.find({ state: "published", author });
+		if (state) {
+			const articles = await articlesModel.find({ state, author: user });
 			return res.status(200).json({ status: true, articles });
 		}
 
-		const articles = await articlesModel.find({ state: "published" });
-		res.status(200).json({ status: true, articles });
+		const articles = await articlesModel.find({ author: user });
+		return res.status(200).json({ status: true, articles });
 	} catch (err) {
 		next({ status: 500, errDesc: err, message: "An error occurred, please try again." });
 	}
@@ -140,9 +150,10 @@ async function deleteArticle(req, res, next) {
 }
 
 module.exports = {
-	getArticles,
 	postArticle,
+	getArticles,
 	getArticle,
+	getUserArticles,
 	updateArticle,
 	updateArticleState,
 	deleteArticle,

@@ -8,6 +8,7 @@ articlesRouter
 	.get(articlesController.getArticles) // GET articles.
 	.post(auth, articlesController.postArticle); // Creates a new article.
 
+articlesRouter.route("/user_articles").get(auth, articlesController.getUserArticles); // GET articles.
 articlesRouter
 	.route("/:articleId")
 	.get(articlesController.getArticle) // GET a single article.
