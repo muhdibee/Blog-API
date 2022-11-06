@@ -7,7 +7,6 @@ const ArticlesSchema = new Schema({
 		type: String,
 		required: [true, "title is required."],
 		unique: [true, "title must be unique."],
-		minLength: 20,
 		trim: true,
 	},
 	description: {
@@ -50,6 +49,7 @@ const ArticlesSchema = new Schema({
 	updated_at: Date,
 });
 
+// Calculate reading_time and set the value before saving to DB.
 ArticlesSchema.pre("save", async function () {
 	const article = this;
 	const wordCount = await article.body.split(" ").length;
