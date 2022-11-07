@@ -1,9 +1,11 @@
 # Blog-API
+
 This is an api for a Blog App
 
 ---
 
 ## Requirements
+
 1. Users should have a first_name, last_name, email, password.
 2. A user should be able to sign up and sign in into the blog app.
 3. Use JWT as authentication strategy and expire the token after 1 hour.
@@ -15,14 +17,18 @@ This is an api for a Blog App
 9. The owner of the blog should be able to update the state of the blog to published.
 10. The owner of a blog should be able to edit the blog in draft or published state.
 11. The owner of the blog should be able to delete the blog in draft or published state.
-12. The owner of the blog should be able to get a list of their blogs. 
-  - The endpoint should be paginated.
-  - It should be filterable by state.
+12. The owner of the blog should be able to get a list of their blogs.
+
+-   The endpoint should be paginated.
+-   It should be filterable by state.
+
 13. Blogs created should have title, description, tags, author, timestamp, state, read_count, reading_time and body.
-14. The list of blogs endpoint that can be accessed by both logged in and not logged in users should be paginated, 
-  - default it to 20 blogs per page. 
-  - It should also be searchable by author, title and tags.
-  - It should also be orderable by read_count, reading_time and timestamp
+14. The list of blogs endpoint that can be accessed by both logged in and not logged in users should be paginated,
+
+-   default it to 20 blogs per page.
+-   It should also be searchable by author, title and tags.
+-   It should also be orderable by read_count, reading_time and timestamp
+
 15. When a single blog is requested, the api should return the user information(the author) with the blog. The read_count of the blog too should be updated by 1
 16. Come up with any algorithm for calculating the reading_time of the blog.
 17. Write tests for all endpoints
@@ -35,7 +41,8 @@ The owner of the blog/article should be logged in to perform actions.
 ---
 
 ## Base URL
-- somehostsite.com
+
+[https://awesome-blog-api.herokuapp.com](https://awesome-blog-api.herokuapp.com)
 
 ---
 
@@ -43,39 +50,41 @@ The owner of the blog/article should be logged in to perform actions.
 
 ### User
 
-|     Field        | Data_type    | Constraints     |
-|------------------|--------------|-----------------|
-| email            | String       | Required, unique|
-| first_name       | String       | Required        |
-| last_name        | String       | Required        |
-| password         | String       | Required        |
-| user_type        | String       | Required, default: user, enum:['user', 'admin'] |
-| timestamp        | Date         | optional        |
-| updated_at       | Date         | optional        |
+| Field      | Data_type | Constraints                                     |
+| ---------- | --------- | ----------------------------------------------- |
+| email      | String    | Required, unique                                |
+| first_name | String    | Required                                        |
+| last_name  | String    | Required                                        |
+| password   | String    | Required                                        |
+| user_type  | String    | Required, default: user, enum:['user', 'admin'] |
+| timestamp  | Date      | optional                                        |
+| updated_at | Date      | optional                                        |
 
 ### Article
 
-|     Field        | Data_type    | Constraints          |
-|------------------|--------------|----------------------|
-| title            | String       | Required, unique     |
-| description      | String       | Required, unique     |
-| body             | String       | Required             |
-| author           | String       | optional             |
-| state            | String       | optional, default: draft, enum:['draft', 'published'] |
-| read_count       | Number       | optional             |
-| reading_time     | Number       | optional             |
-| tags             | Array        | optional, default: []|
-| timestamp        | Date         | optional, default: Date.now()|
-| updated_at       | Date         | optional  default: Date.now()|
+| Field        | Data_type | Constraints                                           |
+| ------------ | --------- | ----------------------------------------------------- |
+| title        | String    | Required, unique                                      |
+| description  | String    | Required, unique                                      |
+| body         | String    | Required                                              |
+| author       | String    | optional                                              |
+| state        | String    | optional, default: draft, enum:['draft', 'published'] |
+| read_count   | Number    | optional                                              |
+| reading_time | Number    | optional                                              |
+| tags         | Array     | optional, default: []                                 |
+| timestamp    | Date      | optional, default: Date.now()                         |
+| updated_at   | Date      | optional default: Date.now()                          |
 
 ---
+
 ## APIs
 
 ### Home
-- Route: /
-- Method: GET
 
-- Response:
+-   Route: /
+-   Method: GET
+
+-   Response:
 
 **success**
 
@@ -87,9 +96,11 @@ The owner of the blog/article should be logged in to perform actions.
 ```
 
 ### Signup User
-- Route: /api/signup
-- Method: POST
-- Body: 
+
+-   Route: /api/signup
+-   Method: POST
+-   Body:
+
 ```
 {
   "email": "muhammad.gmail.com",
@@ -100,7 +111,7 @@ The owner of the blog/article should be logged in to perform actions.
 }
 ```
 
-- Response:
+-   Response:
 
 **Success**
 
@@ -117,9 +128,11 @@ The owner of the blog/article should be logged in to perform actions.
 ```
 
 ### Login User
-- Route: /api/login
-- Method: POST
-- Body: 
+
+-   Route: /api/login
+-   Method: POST
+-   Body:
+
 ```
 {
   "email": "muhammad@gmail.com",
@@ -127,7 +140,7 @@ The owner of the blog/article should be logged in to perform actions.
 }
 ```
 
-- Response:
+-   Response:
 
 **Success**
 
@@ -142,10 +155,11 @@ The owner of the blog/article should be logged in to perform actions.
 ```
 
 ### GET articles
-- Route: /api/articles
-- Method: GET
 
-- Response:
+-   Route: /api/articles
+-   Method: GET
+
+-   Response:
 
 **success**
 
@@ -209,10 +223,11 @@ The owner of the blog/article should be logged in to perform actions.
 ```
 
 ### GET a single article
-- Route: /articles/636790adaa3e4ce035c154ed
-- Method: GET
 
-- Response:
+-   Route: /articles/636790adaa3e4ce035c154ed
+-   Method: GET
+
+-   Response:
 
 **success**
 
@@ -240,11 +255,12 @@ The owner of the blog/article should be logged in to perform actions.
 ```
 
 ### GET author's articles
-- Route: /articles/user_articles
-- Method: GET
-- Headers.x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzY1Yjg3MWExMWZjMzNiOTQyMTAwNGQiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6ImpvaG4iLCJsYXN0X25hbWUiOiJkb2UiLCJ1c2VyX3R5cGUiOiJ1c2VyIiwiaWF0IjoxNjY3NzY4MjEzLCJleHAiOjE2Njc3NzE4MTN9.wUhR6ZMWCNhyzFwm87Buhwf5NSx_yFeQPY2NkwKu4V0
 
-- Response:
+-   Route: /articles/user_articles
+-   Method: GET
+-   Headers.x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzY1Yjg3MWExMWZjMzNiOTQyMTAwNGQiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6ImpvaG4iLCJsYXN0X25hbWUiOiJkb2UiLCJ1c2VyX3R5cGUiOiJ1c2VyIiwiaWF0IjoxNjY3NzY4MjEzLCJleHAiOjE2Njc3NzE4MTN9.wUhR6ZMWCNhyzFwm87Buhwf5NSx_yFeQPY2NkwKu4V0
+
+-   Response:
 
 **success**
 
@@ -308,11 +324,12 @@ The owner of the blog/article should be logged in to perform actions.
 ```
 
 ### GET author's articles filtered by state
-- Route: /articles/user_articles?state=published
-- Method: GET
-- Headers.x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzY1Yjg3MWExMWZjMzNiOTQyMTAwNGQiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6ImpvaG4iLCJsYXN0X25hbWUiOiJkb2UiLCJ1c2VyX3R5cGUiOiJ1c2VyIiwiaWF0IjoxNjY3NzY4MjEzLCJleHAiOjE2Njc3NzE4MTN9.wUhR6ZMWCNhyzFwm87Buhwf5NSx_yFeQPY2NkwKu4V0
 
-- Response:
+-   Route: /articles/user_articles?state=published
+-   Method: GET
+-   Headers.x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzY1Yjg3MWExMWZjMzNiOTQyMTAwNGQiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6ImpvaG4iLCJsYXN0X25hbWUiOiJkb2UiLCJ1c2VyX3R5cGUiOiJ1c2VyIiwiaWF0IjoxNjY3NzY4MjEzLCJleHAiOjE2Njc3NzE4MTN9.wUhR6ZMWCNhyzFwm87Buhwf5NSx_yFeQPY2NkwKu4V0
+
+-   Response:
 
 **success**
 
@@ -359,12 +376,12 @@ The owner of the blog/article should be logged in to perform actions.
 ```
 
 ### Upload an article
-- Route: /articles
-- Method: POST
-- Headers.x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzY1Yjg3MWExMWZjMzNiOTQyMTAwNGQiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6ImpvaG4iLCJsYXN0X25hbWUiOiJkb2UiLCJ1c2VyX3R5cGUiOiJ1c2VyIiwiaWF0IjoxNjY3NzY4MjEzLCJleHAiOjE2Njc3NzE4MTN9.wUhR6ZMWCNhyzFwm87Buhwf5NSx_yFeQPY2NkwKu4V0
 
+-   Route: /articles
+-   Method: POST
+-   Headers.x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzY1Yjg3MWExMWZjMzNiOTQyMTAwNGQiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6ImpvaG4iLCJsYXN0X25hbWUiOiJkb2UiLCJ1c2VyX3R5cGUiOiJ1c2VyIiwiaWF0IjoxNjY3NzY4MjEzLCJleHAiOjE2Njc3NzE4MTN9.wUhR6ZMWCNhyzFwm87Buhwf5NSx_yFeQPY2NkwKu4V0
 
-- Body: 
+-   Body:
 
 ```
 {
@@ -378,7 +395,7 @@ The owner of the blog/article should be logged in to perform actions.
 }
 ```
 
-- Response:
+-   Response:
 
 **success**
 
@@ -406,11 +423,12 @@ The owner of the blog/article should be logged in to perform actions.
 ```
 
 ### Update an article
-- Route: /articles/6367a02c0ad471de229709f9
-- Method: PUT
-- Headers.x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzY1Yjg3MWExMWZjMzNiOTQyMTAwNGQiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6ImpvaG4iLCJsYXN0X25hbWUiOiJkb2UiLCJ1c2VyX3R5cGUiOiJ1c2VyIiwiaWF0IjoxNjY3NzY4MjEzLCJleHAiOjE2Njc3NzE4MTN9.wUhR6ZMWCNhyzFwm87Buhwf5NSx_yFeQPY2NkwKu4V0
 
-- Body:
+-   Route: /articles/6367a02c0ad471de229709f9
+-   Method: PUT
+-   Headers.x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzY1Yjg3MWExMWZjMzNiOTQyMTAwNGQiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6ImpvaG4iLCJsYXN0X25hbWUiOiJkb2UiLCJ1c2VyX3R5cGUiOiJ1c2VyIiwiaWF0IjoxNjY3NzY4MjEzLCJleHAiOjE2Njc3NzE4MTN9.wUhR6ZMWCNhyzFwm87Buhwf5NSx_yFeQPY2NkwKu4V0
+
+-   Body:
 
 ```
 {
@@ -425,7 +443,8 @@ The owner of the blog/article should be logged in to perform actions.
 }
 
 ```
-- Response:
+
+-   Response:
 
 **success**
 
@@ -452,12 +471,13 @@ The owner of the blog/article should be logged in to perform actions.
 }
 ```
 
-### Change the state of an article 
-- Route: /articles/6367a02c0ad471de229709f9
-- Method: PATCH
-- Headers.x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzY1Yjg3MWExMWZjMzNiOTQyMTAwNGQiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6ImpvaG4iLCJsYXN0X25hbWUiOiJkb2UiLCJ1c2VyX3R5cGUiOiJ1c2VyIiwiaWF0IjoxNjY3NzY4MjEzLCJleHAiOjE2Njc3NzE4MTN9.wUhR6ZMWCNhyzFwm87Buhwf5NSx_yFeQPY2NkwKu4V0
+### Change the state of an article
 
-- Body:
+-   Route: /articles/6367a02c0ad471de229709f9
+-   Method: PATCH
+-   Headers.x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzY1Yjg3MWExMWZjMzNiOTQyMTAwNGQiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6ImpvaG4iLCJsYXN0X25hbWUiOiJkb2UiLCJ1c2VyX3R5cGUiOiJ1c2VyIiwiaWF0IjoxNjY3NzY4MjEzLCJleHAiOjE2Njc3NzE4MTN9.wUhR6ZMWCNhyzFwm87Buhwf5NSx_yFeQPY2NkwKu4V0
+
+-   Body:
 
 ```
 {
@@ -465,7 +485,7 @@ The owner of the blog/article should be logged in to perform actions.
  }
 ```
 
-- Response: 
+-   Response:
 
 **success**
 
@@ -492,12 +512,13 @@ The owner of the blog/article should be logged in to perform actions.
 }
 ```
 
-### Delete an article 
-- Route: /articles/6367a02c0ad471de229709f9
-- Method: DELETE
-- Headers.x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzY1Yjg3MWExMWZjMzNiOTQyMTAwNGQiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6ImpvaG4iLCJsYXN0X25hbWUiOiJkb2UiLCJ1c2VyX3R5cGUiOiJ1c2VyIiwiaWF0IjoxNjY3NzY4MjEzLCJleHAiOjE2Njc3NzE4MTN9.wUhR6ZMWCNhyzFwm87Buhwf5NSx_yFeQPY2NkwKu4V0
+### Delete an article
 
-- Response: 
+-   Route: /articles/6367a02c0ad471de229709f9
+-   Method: DELETE
+-   Headers.x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzY1Yjg3MWExMWZjMzNiOTQyMTAwNGQiLCJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwiZmlyc3RfbmFtZSI6ImpvaG4iLCJsYXN0X25hbWUiOiJkb2UiLCJ1c2VyX3R5cGUiOiJ1c2VyIiwiaWF0IjoxNjY3NzY4MjEzLCJleHAiOjE2Njc3NzE4MTN9.wUhR6ZMWCNhyzFwm87Buhwf5NSx_yFeQPY2NkwKu4V0
+
+-   Response:
 
 **success**
 
@@ -531,3 +552,4 @@ The owner of the blog/article should be logged in to perform actions.
 ## Contributor
 - Muhammad Ibrahim
 
+```
