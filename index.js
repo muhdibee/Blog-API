@@ -1,5 +1,5 @@
 require("dotenv").config();
-const logger = require("morgan");
+// const logger = require("morgan");
 const express = require("express");
 const connectToMongoDB = require("./DBConnection");
 const signupRouter = require("./routes/signupRoute");
