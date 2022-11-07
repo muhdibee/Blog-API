@@ -22,9 +22,9 @@ app.use("/api/login", loginRouter);
 app.use("/api/articles", articlesRouter);
 
 // GET API home.
-app.get("/", (req, res) => {
-	res.json({ status: true, message: "Welcome to Blog-API." });
-});
+// app.get("/", (req, res) => {
+// 	res.json({ status: true, message: "Welcome to Blog-API." });
+// });
 
 // App error handler.
 app.use((err, req, res, next) => {
