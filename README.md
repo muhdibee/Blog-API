@@ -543,13 +543,12 @@ The owner of the blog/article should be logged in to perform actions.
     "state": "published"
   }
 }
-``
+```
 
 ---
 
 ...
 
 ## Contributor
-- Muhammad Ibrahim
 
-```
+-   Muhammad Ibrahim
