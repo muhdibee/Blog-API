@@ -4,7 +4,7 @@ This is an api for a Blog App
 
 ---
 
-## Requirements
+## Specifications
 
 1. Users should have a first_name, last_name, email, password.
 2. A user should be able to sign up and sign in into the blog app.
