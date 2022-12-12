@@ -42,7 +42,7 @@ The owner of the blog/article should be logged in to perform actions.
 
 ## Base URL
 
-[https://awesome-blog-api.herokuapp.com](https://awesome-blog-api.herokuapp.com)
+[https://awesome-blog-api.cyclic.app](https://awesome-blog-api.cyclic.app)
 
 ---
 
