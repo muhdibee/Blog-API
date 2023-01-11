@@ -4,7 +4,7 @@ This is an api for a Blog App
 
 ---
 
-## Requirements
+## Specifications
 
 1. Users should have a first_name, last_name, email, password.
 2. A user should be able to sign up and sign in into the blog app.
@@ -42,7 +42,7 @@ The owner of the blog/article should be logged in to perform actions.
 
 ## Base URL
 
-[https://awesome-blog-api.herokuapp.com](https://awesome-blog-api.herokuapp.com)
+[https://awesome-blog-api.cyclic.app](https://awesome-blog-api.cyclic.app)
 
 ---
 
