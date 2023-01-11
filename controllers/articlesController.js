@@ -26,7 +26,7 @@ async function postArticle(req, res, next) {
 async function getArticles(req, res, next) {
 	try {
 		const articles = await articlesModel.find({ state: "published" });
-		res.status(200).json({ status: true, articles });
+		res.status(200).json({ status: true, articles_count: articles.length, articles });
 	} catch (err) {
 		next({ status: 500, errDesc: err, message: "An error occurred, please try again." });
 	}
