@@ -1,10 +1,10 @@
 # Blog-API
 
-This is an api for a Blog App
+This is an api for a Blog Application
 
 ---
 
-## Specifications
+## Features
 
 1. Users should have a first_name, last_name, email, password.
 2. A user should be able to sign up and sign in into the blog app.
@@ -20,7 +20,7 @@ This is an api for a Blog App
 12. The owner of the blog should be able to get a list of their blogs.
 
 -   The endpoint should be paginated.
--   It should be filterable by state.
+-   It should be filterable by blog-state.
 
 13. Blogs created should have title, description, tags, author, timestamp, state, read_count, reading_time and body.
 14. The list of blogs endpoint that can be accessed by both logged in and not logged in users should be paginated,
@@ -33,18 +33,18 @@ This is an api for a Blog App
 16. Come up with any algorithm for calculating the reading_time of the blog.
 17. Write tests for all endpoints
 
----
+
 
 **Note:**
-The owner of the blog/article should be logged in to perform actions.
+The owner of the blog/article should be signed in to perform actions.
 
----
 
-## Base URL
 
-[https://awesome-blog-api.cyclic.app](https://awesome-blog-api.cyclic.app)
+## Live server
 
----
+- Project is hosted here: [https://awesome-blog-api.onrender.com/](https://awesome-blog-api.onrender.com/)
+
+
 
 ## Models
 
@@ -77,7 +77,7 @@ The owner of the blog/article should be logged in to perform actions.
 
 ---
 
-## APIs
+## Documentation / Usage guide
 
 ### Home
 
@@ -551,4 +551,4 @@ The owner of the blog/article should be logged in to perform actions.
 
 ## Contributor
 
--   Muhammad Ibrahim
+-   [Muhammad Ibrahim](https://www.linkedin.com/in/muhdibee/)
