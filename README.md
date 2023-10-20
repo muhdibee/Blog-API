@@ -1,6 +1,17 @@
 # Blog-API
 
-This is an api for a Blog Application
+This is an api for a Blog Application.
+
+---
+
+## Live server
+
+Project is hosted here: [https://awesome-blog-api.onrender.com/](https://awesome-blog-api.onrender.com/)
+
+---
+
+## Documentation / Usage guide
+Documentation on how to use this API can be found here:https://github.com/muhdibee/Blog-API/edit/main/README.md#documentation--usage-guide
 
 ---
 
@@ -37,12 +48,6 @@ This is an api for a Blog Application
 
 **Note:**
 The owner of the blog/article should be signed in to perform actions.
-
-
-
-## Live server
-
-- Project is hosted here: [https://awesome-blog-api.onrender.com/](https://awesome-blog-api.onrender.com/)
 
 
 
