@@ -11,7 +11,7 @@ Project is hosted here: [https://awesome-blog-api.onrender.com/](https://awesome
 ---
 
 ## Documentation / Usage guide
-Documentation on how to use this API can be found here:https://github.com/muhdibee/Blog-API/edit/main/README.md#documentation--usage-guide
+Documentation on how to use this API can be found here:https://github.com/muhdibee/Blog-API/edit/main/README.md#documentation--usage-guide-1
 
 ---
 
