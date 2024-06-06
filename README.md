@@ -1,6 +1,6 @@
 # Blog-API
 
-This is an api for a Blog Application.
+This is a RESTful API for the backend of a Blog application. It was inplemented usin Node.js, Express, MongoDB and JSON web Token. Find more details below.
 
 ---
 
@@ -11,9 +11,6 @@ Project is hosted here: [https://awesome-blog-api.onrender.com/](https://awesome
 ---
 
 ## Documentation / Usage guide
-Documentation on how to use this API can be found here:https://github.com/muhdibee/Blog-API/edit/main/README.md#documentation--usage-guide-1
-
----
 
 ## Features
 
